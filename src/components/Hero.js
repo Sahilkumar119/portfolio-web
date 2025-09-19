@@ -1,10 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import useTypingEffect from "../hooks/useTypingEffect";
+import React, { useRef } from "react";
 import useMatrixAnimation from "../hooks/useMatrixAnimation";
 
 const Hero = () => {
   const canvasRef = useRef(null);
-  const typingText = useTypingEffect("Hello! I'm Sahil Kumar", 100);
 
   useMatrixAnimation(canvasRef);
 
@@ -14,7 +12,11 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-avatar-container">
-            <img src="/avatr.png" alt="Avatar" className="avatar-img" />
+            <img
+              src={`${process.env.PUBLIC_URL}/avatr.png`}
+              alt="Avatar"
+              className="avatar-img"
+            />
             <div className="avatar-glow"></div>
           </div>
           <div className="hero-text">

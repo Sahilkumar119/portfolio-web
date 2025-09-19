@@ -6,30 +6,31 @@ const useMatrixAnimation = (canvasRef) => {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
+    const letters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+    const fontSize = 10;
+    const columns = canvas.width / fontSize;
+    const drops = [];
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    const columns = Math.floor(canvas.width / 20);
-    const drops = Array(columns).fill(1);
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
 
     const matrix = () => {
-      ctx.fillStyle = "rgba(15, 5, 26, 0.04)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#8a2be2";
-      ctx.font = "15px monospace";
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
-        const text = String.fromCharCode(Math.random() * 128);
-        ctx.fillText(text, i * 20, drops[i] * 20);
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         drops[i]++;
@@ -38,10 +39,7 @@ const useMatrixAnimation = (canvasRef) => {
 
     const interval = setInterval(matrix, 35);
 
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("resize", resizeCanvas);
-    };
+    return () => clearInterval(interval);
   }, [canvasRef]);
 };
 
