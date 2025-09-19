@@ -731,9 +731,9 @@ body::before {
 .section-title::after {
   content: "";
   position: absolute;
-  left: 100;
+  left: 0;
   bottom: -10px;
-  width: 160px;
+  width: 80px;
   height: 3px;
   background: linear-gradient(
     90deg,
@@ -1466,11 +1466,16 @@ body::before {
 
 .contact .section-title::after {
   content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #ff66cc, #66fff9);
-  margin: 10px auto 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+  filter: drop-shadow(0 0 8px rgba(178, 102, 255, 0.6));
+  border-radius: 2px;
+  margin: 0;
 }
 
 .contact .contact-description {
