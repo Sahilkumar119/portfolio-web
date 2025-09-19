@@ -89,22 +89,6 @@ body::before {
 }
 
 /* Subtle lines overlay background */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/lines.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.08; /* subtle */
-  mix-blend-mode: soft-light; /* blends gently with gradients */
-  pointer-events: none;
-  z-index: -1;
-}
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
