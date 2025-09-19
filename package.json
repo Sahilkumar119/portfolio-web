@@ -2,7 +2,6 @@
   "name": "portfolio-purple-react",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://Sahilkumar119.github.io/portfolio-web",
   "dependencies": {
     "@vercel/speed-insights": "^1.2.0",
     "react": "^18.2.0",
